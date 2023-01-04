@@ -8,11 +8,34 @@ import JobsScreen from './JobsScreen';
 
 const Stack = createNativeStackNavigator();
 
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
+function LogoTitle() {
+  return <AntDesign name="minus" style={{fontSize: 30, color: 'green'}} />;
+}
+
 export default MyMainNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="JobsScreen" component={JobsScreen} />
+        <Stack.Screen
+          name="JobsScreen"
+          component={JobsScreen}
+          options={{
+            headerShown: true,
+            headerStyle: {
+              backgroundColor: 'orange',
+            },
+            headerBackTitleVisible: false,
+            headerTitle: props => <LogoTitle {...props} />,
+            headerTintColor: 'brown',
+            headerTitleStyle: {
+              color: 'white',
+              fontSize: 30,
+              fontWeight: 'bold',
+            },
+          }}
+        />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
